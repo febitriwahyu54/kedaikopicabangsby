@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" class="text-[75%] scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>kedaikopimitra2</title>
+        <link href="./output.css" rel="stylesheet">
+        <!-- alpine js -->
+        <script
+            defer="defer"
+            src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="./app.js"></script>
+        <!-- js feather icon -->
+        <script src="https://unpkg.com/feather-icons"></script>
+    </head>
+    <body class="font-google bg-bg h-[9000px] overflow-x-hidden">
+        <!-- navbar start -->
+        <nav
+            class="flex justify-between items-center py-[1.4rem] px-[7%] bg-[rgba(218,127,43,0.8)] border-b-2 border-b-third fixed inset-x-0 t-0 z-999">
+            <a href="#" id="#home" class="font-bold text-[2rem]">kenangan
+                <span class="text-white">fajar</span></a>
+            <div class="hidden lg:flex justify-between w-[30rem] capitalize text-[2rem] ">
+                <a href="#home" class="hover:text-sc">home</a>
+                <a href="#about" class="hover:text-sc">about</a>
+                <a href="#produk" class="hover:text-sc">produk</a>
+                <a href="#contact" class="hover:text-sc">kontak</a>
+            </div>
+            <div x-data="{open : false}">
+                <button
+                    class="lg:hidden border-2 px-1 py-1 rounded-md"
+                    x-on:click="open = ! open">
+                    <i data-feather="menu"></i>
+                </button>
+                <div
+                    x-show="open"
+                    x-transition:enter.duration.500ms
+                    x-transition:leave.duration.500ms
+                    @click.outside="open = false"
+                    class="lg:hidden capitalize bg-[rgba(218,127,43,0.8)] h-screen absolute flex flex-col justify-around items-center pb-[10rem] mt-[1.8rem] w-full max-w-[300px] right-0 text-[2rem] ">
+                    <a href="#home" class="hover:text-sc">home</a>
+                    <a href="#about" class="hover:text-sc">about</a>
+                    <a href="#kontak" class="hover:text-sc">kontak</a>
+                    <a href="#product" class="hover:text-sc">product</a>
+                </div>
+                <button>
+                    <i data-feather="shopping-bag"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- navbar end -->
+        <!-- hero section start -->
+        <section
+            id="home"
+            class="relative bg-no-repeat bg-cover bg-center min-h-screen flex items-center"
+            style="background-image: url('../img/im4.jpg');">
+            <!-- Gradient Overlay menggunakan Tailwind -->
+            <div
+                class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#f6b165] via-[#d58d57]/0"></div>
+            <!-- Konten -->
+            <div class="relative z-10 text-white px-8 ">
+                <h1 class="text-6xl lg:text-8xl">Mulailah Minum
+                    <span class="text-sc"><br>Kopi Tanpa Gula</span></h1>
+                <p class="text-bg text-3xl mt-3 font-light  md:text-white ">Lorem ipsum dolor sit amet consectetur
+                    <br>adipisicing elit. Architecto, impedit.</p>
+            </div>
+        </section>
+        <!-- hero section end -->
+        <!-- about section start -->
+        <section id="about">
+            <h2 class="text-6xl text-center pt-[10rem] px-[7%] pb-[1.4rem] mb-3">Tentang
+                <span class="text-white">Kami</span></h2>
+            <div class="md:flex ">
+                <div class="md:grow shrink basis-[45rem]">
+                    <img src="../img/im5.jpg" alt="produk" class="w-full" style="-webkit-mask-image: url('/img/masking.svg'); -webkit-mask-size: 50%; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center;">
+                </div>
+                <div class="grow shrink basis-[35rem] py-0 px-4">
+                    <h3 class="text-3xl mb-5 mt-5 lg:mt-0">kenapa memilih kopi kami?</h3>
+                    <p class="mb-3.5 font-thin text-2xl leading-8 indent-8">Lorem ipsum dolor, sit
+                        amet consectetur adipisicing elit. Illum voluptatibus magnam ex accusantium
+                        vitae laboriosam. Vel magni harum, non nostrum odio quia facere sed culpa.</p>
+                    <p class="mb-3.5 font-thin text-2xl leading-8 indent-8">Lorem ipsum dolor sit
+                        amet consectetur adipisicing elit. Temporibus exercitationem consequuntur
+                        tempora error? Ab non nesciunt atque! Dicta animi est odit beatae pariatur?
+                        Optio, doloribus.</p>
+                    <p class="mb-3.5 font-thin text-2xl leading-8 indent-8">Lorem ipsum dolor sit
+                        amet consectetur adipisicing elit. Temporibus exercitationem consequuntur
+                        tempora error? Ab non nesciunt atque! Dicta animi est odit beatae pariatur?
+                        Optio, doloribus.</p>
+                </div>
+            </div>
+        </section>
+        <!-- about section end -->
+        <!-- produk section start -->
+        <section id="produk" class="mx-3" x-data="products">
+            <h2 class="text-6xl text-center pt-[10rem] px-[7%] pb-[1.4rem] mb-3">
+                Produk
+                <span class="text-white">Kami</span>
+            </h2>
+            <p class="mb-3.5 font-thin text-2xl leading-8 indent-8 text-center">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, fugiat.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-16">
+                <!-- Looping Produk -->
+                <template x-for="item in items" :key="item.id">
+                    <div class="text-center border border-third p-8" x-data="{ openId: null }">
+                        <div class="flex items-center justify-center mb-5 relative">
+                            <button
+                                class="w-16 h-16 text-white m-[0.3rem] rounded-full flex justify-center items-center hover:bg-primary border border-primary">
+                                <i data-feather="shopping-cart"></i>
+                            </button>
+                            <button
+                                class="w-16 h-16 text-white m-[0.3rem] rounded-full flex justify-center items-center hover:bg-primary border border-primary"
+                                @click="openId = (openId === item.id ? null : item.id)">
+                                <i data-feather="eye"></i>
+                            </button>
+                        </div>
+                        <!-- Modal Produk -->
+                        <div
+                            x-show="openId === item.id"
+                            x-transition:enter.duration.500ms
+                            x-transition:leave.duration.500ms
+                            @click.outside="openId = null"
+                            class="fixed top-[20%] left-1/2 transform -translate-x-1/2 z-50 bg-primary w-[95%] sm:w-[80%] md:w-[60%] lg:w-[50%] h-auto flex flex-col sm:flex-row items-center border-2 border-sc rounded-3xl p-6 max-w-[95vw]">
+                            <!-- img product -->
+                            <div class="flex justify-center w-full sm:w-auto">
+                                <img
+                                    :src="'../produkkopi/' + item.img"
+                                    :alt="item.name"
+                                    class="w-full max-w-[12rem] sm:max-w-[14rem] h-auto border-2 border-bg rounded-3xl">
+                            </div>
+                            <!-- info produk -->
+                            <div
+                                class="text-white bg-third border-2 rounded-3xl p-4 mt-4 sm:mt-0 sm:ml-6 text-center sm:text-left w-full">
+                                <h3 class="text-3xl pt-2" x-text="item.name"></h3>
+                                <hr class="w-[80%] sm:w-full md:w-full lg:w-full mt-2 mx-auto sm:mx-0">
+                                <p class="text-xl mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                                <p class="text-xl mt-4">
+                                    <span x-text="rupiah(item.price)"></span></p>
+                                <button class="mt-4" @click="openId = null">
+                                    <i data-feather="x-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Gambar Produk -->
+                        <div>
+                            <img :src="'../produkkopi/' + item.img" :alt="item.name" class="border-2 border-third rounded-3xl">
+                        </div>
+                        <div class="mt-10">
+                            <h3 class="capitalize text-3xl" x-text="item.name"></h3>
+                        </div>
+                        <div class="capitalize text-3xl mt-2">
+                            <span x-text="rupiah(item.price)"></span></div>
+                    </div>
+                </template>
+            </div>
+        </section>
+        <!-- produk section end -->
+        <!-- komenttar start -->
+        <div x-data="commentSection()" class="max-w-2xl mx-4 sm:mx-auto">
+            <h3 class="text-4xl font-bold my-4">Komentar</h3>
+            
+            <!-- Form Tambah Komentar -->
+            <div class="mb-4">
+                <input x-model="newComment" type="text" placeholder="Tambahkan komentar..." 
+                       class="w-full px-4 py-2 border rounded" />
+                <button @click="addComment()" class="mt-2 px-4 py-2 bg-primary text-white rounded">Kirim</button>
+            </div>
+        
+            <!-- List Komentar -->
+            <template x-for="(comment, index) in comments" :key="comment.id">
+                <div class="border p-3 mb-3 rounded">
+                    <p class="font-semibold" x-text="comment.name"></p>
+                    <p x-text="comment.comment"></p>
+                    
+                    <!-- Tombol Balas -->
+                    <button @click="toggleReply(index)" class="text-white text-3xl">Balas</button>
+        
+                    <!-- Form Balasan -->
+                    <div x-show="replyIndex === index" class="mt-2">
+                        <input x-model="replyComment" type="text" placeholder="Tambahkan balasan..." 
+                               class="w-full px-3 py-2 border rounded" />
+                        <button @click="addReply(index)" class="mt-2 px-3 py-1 bg-green-500 text-white rounded">Kirim</button>
+                    </div>
+        
+                    <!-- List Balasan -->
+                    <div class="mt-2 pl-5 border-l">
+                        <template x-for="reply in comment.replies" :key="reply.id">
+                            <div class="text-sm bg-gray-100 p-2 rounded mb-1">
+                                <p class="font-semibold" x-text="reply.name"></p>
+                                <p x-text="reply.comment"></p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+        
+        <!-- komenttar end -->
+        <!-- js feather icon -->
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                feather.replace(); // Render ikon setelah halaman selesai dimuat
+            });
+        </script>
+    </body>
+</html>
+
+<!-- npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch -->
